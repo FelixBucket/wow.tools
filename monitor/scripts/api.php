@@ -50,6 +50,7 @@ if (!isset($_GET['draw']) || !isset($_GET['order'][0]['column'])) {
 
 $query = "FROM ngdp_history INNER JOIN ngdp_urls on ngdp_urls.id=ngdp_history.url_id";
 
+<<<<<<< HEAD
 if (!empty($_SESSION['rank'])) {
     if (!empty($_GET['columns'][1]['search']['value'])) {
         $query .= " WHERE event = 'valuechange' AND ngdp_urls.url LIKE :prodSearch";
@@ -64,6 +65,13 @@ if (!empty($_SESSION['rank'])) {
     } else {
         $query .= " WHERE event = 'valuechange' AND ngdp_urls.url LIKE '%wow%'";
     }
+=======
+if (!empty($_GET['columns'][1]['search']['value'])) {
+    $query .= " WHERE event = 'valuechange' AND ngdp_urls.url LIKE :prodSearch";
+    $prodSearch = "%" . $_GET['columns'][1]['search']['value'] . "%";
+} else {
+    $query .= " WHERE event = 'valuechange'";
+>>>>>>> parent of caa6fdf... Hide non-wow products from monitor
 }
 
 
